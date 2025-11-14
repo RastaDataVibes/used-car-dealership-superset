@@ -3,6 +3,14 @@ set -e
 
 echo "=== SUPERSET: Starting Init ==="
 
+# === ACTIVATE RENDER'S VENV (THE ONLY PATH THAT WORKS) ===
+source /opt/render/project/.venv/bin/activate
+
+# === VERIFY SUPERSET IS THERE ===
+echo "Python: $(python --version)"
+echo "Superset CLI: $(which superset || echo 'NOT FOUND')"
+command -v superset || { echo "ERROR: superset not in PATH"; exit 1; }
+
 superset db upgrade
 
 superset fab create-admin \
