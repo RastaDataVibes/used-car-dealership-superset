@@ -1,0 +1,24 @@
+import os
+
+# === REQUIRED ===
+SECRET_KEY = os.environ["SUPERSET_SECRET_KEY"]
+SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
+
+# === WEB SERVER ===
+SUPERSET_WEBSERVER_PORT = int(os.environ.get("PORT", 8088))
+
+# === PERFORMANCE & UI ===
+ROW_LIMIT = 10000
+WEBSERVER_TIMEOUT = 120
+SUPERSET_LOAD_EXAMPLES = False
+
+# === CACHE (optional but good) ===
+CACHE_CONFIG = {
+    'CACHE_TYPE': 'FileSystemCache',
+    'CACHE_DIR': '/tmp/superset_cache'
+}
+
+# === SECURITY (Render = HTTP) ===
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
