@@ -1,5 +1,8 @@
 import os
 
+# === ACTIVATE VIRTUALENV (THIS IS THE FIX) ===
+source $(python -c "import sys, pathlib; print(pathlib.Path(sys.executable).parent / 'activate')") || source .venv/bin/activate || source venv/bin/activate
+
 # === REQUIRED ===
 SECRET_KEY = os.environ["SUPERSET_SECRET_KEY"]
 SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
